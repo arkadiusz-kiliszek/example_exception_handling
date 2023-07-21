@@ -1,6 +1,5 @@
 package com.example.example_exception_handling.endpoint;
 
-import com.example.example_exception_handling.dto.CustomerDto;
 import com.example.example_exception_handling.exception.CustomerAlreadyExistsException;
 import com.example.example_exception_handling.handlers.ErrorResponse;
 import com.example.example_exception_handling.model.Customer;
@@ -17,20 +16,20 @@ public class CustomerController {
 
     // Get Customer by Id
     @GetMapping("/getCustomer/{id}")
-    public CustomerDto getCustomer(@PathVariable("id") Long id) {
+    public Customer getCustomer(@PathVariable("id") Long id) {
         return customerService.getCustomer(id);
     }
 
     // Add new Customer
     @PostMapping("/addCustomer")
-    public String addcustomer(@RequestBody CustomerDto customerDto) {
-        return customerService.addCustomer(customerDto);
+    public String addcustomer(@RequestBody Customer customer) {
+        return customerService.addCustomer(customer);
     }
 
     // Update Customer details
     @PutMapping("/updateCustomer")
-    public String updateCustomer(@RequestBody CustomerDto customerDto) {
-        return customerService.updateCustomer(customerDto);
+    public String updateCustomer(@RequestBody Customer customer) {
+        return customerService.updateCustomer(customer);
     }
 
     @ExceptionHandler(value = CustomerAlreadyExistsException.class)
