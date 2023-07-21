@@ -8,8 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-
 @RestController
 @RequiredArgsConstructor
 public class CustomerController {
@@ -24,7 +22,7 @@ public class CustomerController {
 
     // Add new Customer
     @PostMapping("/addCustomer")
-    public String addcustomer(@RequestBody @Valid Customer customer) {
+    public String addcustomer(@RequestBody Customer customer) {
         return customerService.addCustomer(customer);
     }
 
