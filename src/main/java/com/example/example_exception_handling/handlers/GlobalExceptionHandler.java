@@ -11,10 +11,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(value
-            = NoSuchCustomerExistsException.class)
+            = Exception.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public @ResponseBody ErrorResponse
-    handleException(NoSuchCustomerExistsException ex) {
+    public @ResponseBody ErrorResponse handleException(Exception ex) {
         return new ErrorResponse(
                 HttpStatus.NOT_FOUND.value(), ex.getMessage());
     }

@@ -1,5 +1,6 @@
 package com.example.example_exception_handling.endpoint;
 
+import com.example.example_exception_handling.dto.CustomerDto;
 import com.example.example_exception_handling.exception.CustomerAlreadyExistsException;
 import com.example.example_exception_handling.handlers.ErrorResponse;
 import com.example.example_exception_handling.model.Customer;
@@ -7,6 +8,8 @@ import com.example.example_exception_handling.serivces.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,13 +25,13 @@ public class CustomerController {
 
     // Add new Customer
     @PostMapping("/addCustomer")
-    public String addcustomer(@RequestBody Customer customer) {
+    public String addcustomer(@RequestBody @Valid CustomerDto customer) {
         return customerService.addCustomer(customer);
     }
 
     // Update Customer details
     @PutMapping("/updateCustomer")
-    public String updateCustomer(@RequestBody Customer customer) {
+    public String updateCustomer(@RequestBody CustomerDto customer) {
         return customerService.updateCustomer(customer);
     }
 
